@@ -1,1 +1,39 @@
-.about {height: 110vh;}
+.about {
+    padding: 40px;
+    margin-bottom: 20px;
+  }
+  
+  .about-heading {
+    color: #3B7197;
+    font-size: 34px;
+    margin-bottom: 10px;
+  }
+  
+  .about-para {
+    color: #3B7197;
+    font-size: 20px;
+    margin-bottom: 10px;
+    padding: 0px 20px;
+  }
+  
+  .sub-heading {
+    color: #4A8DB7;
+    font-size: 24px;
+    margin-top: 50px;
+    padding-bottom: 5px;
+    width: 200px;
+    border-bottom: 2px solid #4A8DB7;
+  }
+  
+  .key-features {
+    color: #74BDE0;
+    font-size: 16px;
+    padding: 0px 30px;
+  }
+  
+  .feature {
+    padding: 0px 10px;
+    margin: 0px 40px;
+    margin-bottom: 30px;
+  }
+  
