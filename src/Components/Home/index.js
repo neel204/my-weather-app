@@ -1,7 +1,7 @@
 import {Component} from 'react'
 import {BsSearch} from 'react-icons/bs'
 import {AiOutlinePlusCircle} from 'react-icons/ai'
-// import {v4 as uuidv4} from 'uuid'
+import {v4 as uuidv4} from 'uuid'
 
 import Cards from '../Cards'
 
@@ -30,7 +30,7 @@ let userAddedPlaces = [
     },
     {
         id: uuidv4(),
-        name: 'chennai'
+        name: 'Chennai'
     },
     {
         id: uuidv4(),
@@ -51,6 +51,43 @@ class Home extends Component{
         this.setState({userInputLocation: event.target.value})
     }
 
+    searchPlace = async () => {
+        const userInputLocation = this.state
+        let userPlace = {
+            days : 5,
+            location: userInputLocation,
+        };
+        const url = "https://api.m3o.com/v1/weather/Forecast";
+        const option = {
+            method: "POST",  
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                Authorization: "Bearer NzJjNTU1MmUtZDZhNi00MWZlLTg2MmItMGUyOWNmMzMzMDlm"
+            },
+            body : JSON.stringify(userPlace)
+        };
+
+        const response = await fetch(url, option)
+        if (response.ok === true){
+            
+        }
+    }    
+
+    addPlace = () => {
+        const { userInputLocation, userAddedPlaces } = this.state;
+        const newPlace = {
+            id: uuidv4(),
+            name: userInputLocation
+        };
+        const updatedPlaces = [...userAddedPlaces, newPlace];
+        this.setState({
+            userAddedPlaces: updatedPlaces,
+            userInputLocation: ''
+        });
+    }
+    
+
     render(){
         return(
             <div className=''>
@@ -59,11 +96,11 @@ class Home extends Component{
                         <div className='user-input-container'>
                             <div className='input-container'>
                                 <input type='text' placeholder='Enter Location' className='user-input' onChange={this.onUserInput}/>
-                                <button className='search-btn'>
+                                <button onClick={this.searchPlace} className='search-btn'>
                                     <BsSearch/>
                                 </button>
                             </div>
-                            <button type='button' className='add-btn'>
+                            <button type='button' className='add-btn' onClick={this.addPlace}>
                                 <AiOutlinePlusCircle className='plus'/>
                                 Add
                             </button>
