@@ -2,6 +2,7 @@ import { Link, NavLink, withRouter } from 'react-router-dom';
 import './index.css';
 
 const Header = ({ location }) => {
+   // eslint-disable-next-line 
   const { pathname } = location;
 
   return (
