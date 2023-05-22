@@ -7,7 +7,7 @@ const Cards = () => (
       <div class="card-temp">
           <div>
               <h1>32<sup>o</sup></h1>
-              <h1 >Sunny</h1>
+              <h1 >Rain</h1>
           </div>
       </div>
       <div class="details-container">
@@ -56,7 +56,7 @@ const Cards = () => (
       <div class="card-temp">
           <div>
               <h1>32<sup>o</sup></h1>
-              <h1>Sunny</h1>
+              <h1>Snow</h1>
           </div>
       </div>
       <div class="details-container">

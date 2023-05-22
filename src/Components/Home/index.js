@@ -3,6 +3,7 @@ import {BsSearch} from 'react-icons/bs'
 import {AiOutlinePlusCircle} from 'react-icons/ai'
 import {v4 as uuidv4} from 'uuid'
 
+import Failure from '../Failure'
 import Cards from '../Cards'
 
 import './index.css'
@@ -70,7 +71,7 @@ class Home extends Component{
 
         const response = await fetch(url, option)
         if (response.ok === true){
-            
+
         }
     }    
 
@@ -107,6 +108,7 @@ class Home extends Component{
                         </div>
                     </div>
                     <div className='container-2'>
+                        <Failure/>
                     </div>
                 </div>
                 <div>
