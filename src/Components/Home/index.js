@@ -73,7 +73,8 @@ class Home extends Component{
         };
 
         const response = await fetch(url, option)
-        if (response.ok === true){
+        if (response.ok === true) {
+            this.setState(apiStatusConstants.success)
             const data = await response.json()
             const locationDetailsFormate = data.map(eachInfo => ({
                 location: eachInfo.location,
@@ -84,7 +85,26 @@ class Home extends Component{
                 timezone: eachInfo.timezone,
                 localTime: eachInfo.local_time,
             }))
-            const forcaseDetailsFormate = data.forecast.map
+            const allforcaseDetailsFormate = data.forecast.map(each => each)
+            const eachFromatted = allforcaseDetailsFormate.map(i => ({
+                date: i.date,
+                maxTempC: i.max_temp_c,
+                maxTempF: i.max_temp_f,
+                minTempC: i.min_temp_c,
+                minTempF: i.min_temp_f,
+                avgTempC: i.avg_temp_c,
+                avgTempF: i.avg_temp_f,
+                willItrain:i.will_it_rain,
+                chanceOfRain: i.chance_of_rain,
+                condition: i.condition,
+                sunrise: i.sunrise,
+                sunset: i.sunset,
+                maxWindMph: i.max_wind_mph,
+                maxWindKph: i.max_wind_kph
+            }))
+        }
+        else{
+            this.setState(apiStatusConstants.failure)
         }
     }    
 
