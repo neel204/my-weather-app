@@ -2,6 +2,7 @@ import {Component} from 'react'
 import {BsSearch} from 'react-icons/bs'
 import {AiOutlinePlusCircle} from 'react-icons/ai'
 import {v4 as uuidv4} from 'uuid'
+import Loader from 'react-loader-spinner'
 
 import Failure from '../Failure'
 import Cards from '../Cards'
@@ -129,7 +130,26 @@ class Home extends Component{
             userInputLocation: ''
         });
     }
+
+    renderLoadingView = () => (
+        <div className="products-loader-container">
+          <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
+        </div>
+      )
     
+    renderAsPerApiStatus = () => {
+        const {apiStatus} = this.state
+        switch (apiStatus) {
+            case apiStatusConstants.success:
+              return this.renderPrimeDealsList()
+            case apiStatusConstants.failure:
+              return <Failure/>
+            case apiStatusConstants.inProgress:
+              return this.renderLoadingView()
+            default:
+              return null
+          }
+    }
 
     render(){
         return(
