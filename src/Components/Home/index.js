@@ -2,7 +2,7 @@ import {Component} from 'react'
 import {BsSearch} from 'react-icons/bs'
 import {AiOutlinePlusCircle} from 'react-icons/ai'
 import {v4 as uuidv4} from 'uuid'
-import Loader from 'react-loader-spinner'
+import {ThreeDots, InfinitySpin } from 'react-loader-spinner'
 
 import Failure from '../Failure'
 import Cards from '../Cards'
@@ -133,7 +133,7 @@ class Home extends Component{
 
     renderLoadingView = () => (
         <div className="products-loader-container">
-          <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
+          <ThreeDots color="#0b69ff" height="50" width="50" />
         </div>
       )
     
@@ -171,6 +171,9 @@ class Home extends Component{
                     </div>
                     <div className='container-2'>
                         <Failure/>
+                        <ThreeDots color="#0b69ff" height="50" width="50" />
+                        <InfinitySpin width='200' color="#4c7694"
+/>
                     </div>
                 </div>
                 <div>
