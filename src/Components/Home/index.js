@@ -55,58 +55,67 @@ class Home extends Component{
     }
 
     searchPlace = async () => {
-        this.setState(apiStatusConstants.inProgress)
-        const userInputLocation = this.state
+        this.setState({ apiStatus: apiStatusConstants.inProgress });
+        const { userInputLocation } = this.state;
         let userPlace = {
-            days : 5,
-            location: userInputLocation,
+          days: 5,
+          location: userInputLocation,
         };
+        console.log(userPlace);
         const url = "https://api.m3o.com/v1/weather/Forecast";
         const option = {
-            method: "POST",  
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-                Authorization: "Bearer NzJjNTU1MmUtZDZhNi00MWZlLTg2MmItMGUyOWNmMzMzMDlm"
-            },
-            body : JSON.stringify(userPlace)
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: "Bearer NzJjNTU1MmUtZDZhNi00MWZlLTg2MmItMGUyOWNmMzMzMDlm",
+          },
+          body: JSON.stringify(userPlace),
         };
-
-        const response = await fetch(url, option)
-        if (response.ok === true) {
-            this.setState(apiStatusConstants.success)
-            const data = await response.json()
-            const locationDetailsFormate = data.map(eachInfo => ({
-                location: eachInfo.location,
-                region: eachInfo.region,
-                country: eachInfo.country,
-                latitude: eachInfo.latitude,
-                longitude: eachInfo.longitude,
-                timezone: eachInfo.timezone,
-                localTime: eachInfo.local_time,
-            }))
-            const allforcaseDetailsFormate = data.forecast.map(each => each)
-            const eachFromatted = allforcaseDetailsFormate.map(i => ({
-                date: i.date,
-                maxTempC: i.max_temp_c,
-                maxTempF: i.max_temp_f,
-                minTempC: i.min_temp_c,
-                minTempF: i.min_temp_f,
-                avgTempC: i.avg_temp_c,
-                avgTempF: i.avg_temp_f,
-                willItrain:i.will_it_rain,
-                chanceOfRain: i.chance_of_rain,
-                condition: i.condition,
-                sunrise: i.sunrise,
-                sunset: i.sunset,
-                maxWindMph: i.max_wind_mph,
-                maxWindKph: i.max_wind_kph
-            }))
+        console.log(option);
+      
+        try {
+          const response = await fetch(url, option);
+          if (response.ok === true) {
+            this.setState({ apiStatus: apiStatusConstants.success });
+            const data = await response.json();
+            const locationDetailsFormate = {
+              location: data.location,
+              region: data.region,
+              country: data.country,
+              latitude: data.latitude,
+              longitude: data.longitude,
+              timezone: data.timezone,
+              localTime: data.local_time,
+            };
+            const allforcaseDetailsFormate = data.forecast.map((each) => each);
+            const eachFromatted = allforcaseDetailsFormate.map((i) => ({
+              date: i.date,
+              maxTempC: i.max_temp_c,
+              maxTempF: i.max_temp_f,
+              minTempC: i.min_temp_c,
+              minTempF: i.min_temp_f,
+              avgTempC: i.avg_temp_c,
+              avgTempF: i.avg_temp_f,
+              willItRain: i.will_it_rain,
+              chanceOfRain: i.chance_of_rain,
+              condition: i.condition,
+              sunrise: i.sunrise,
+              sunset: i.sunset,
+              maxWindMph: i.max_wind_mph,
+              maxWindKph: i.max_wind_kph,
+            }));
+      
+            console.log(locationDetailsFormate, eachFromatted);
+          } else {
+            this.setState({ apiStatus: apiStatusConstants.failure });
+          }
+        } catch (error) {
+          console.error(error);
+          this.setState({ apiStatus: apiStatusConstants.failure });
         }
-        else{
-            this.setState(apiStatusConstants.failure)
-        }
-    }    
+      }
+       
 
     addPlace = () => {
         const { userInputLocation, userAddedPlaces } = this.state;
