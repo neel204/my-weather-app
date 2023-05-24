@@ -1,7 +1,19 @@
+import { useEffect } from 'react';
 import './index.css'
 
-const About = () => (
-    <div className='about'>
+const About = () => {
+    useEffect(() => {
+        const hash = window.location.hash.substr(1);
+        if (hash) {
+          const element = document.getElementById(hash);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      }, []);
+    return (
+    <>
+        <div className='about'>
         <h3 className='about-heading'>About: </h3>
         <p className='about-para'>
             Welcome to Weather-By, your ultimate online destination for weather forecasts 
@@ -51,6 +63,11 @@ const About = () => (
             prepared, and make the most of every day!
         </p>
     </div>
-)
+    <div id="section1">
+        <h1>The following are the reasons why the server cannot locate the Location information. </h1>
+    </div>
+    </>
+    )
+    }
 
 export default About

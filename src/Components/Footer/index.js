@@ -26,8 +26,8 @@ const Footer = () => (
         </div>
         <div>
             <h1>About Us</h1>
-            <p>Who am I?</p>
             <p>Contact Us</p>
+            <p>Who am I?</p>
             <p>FAQ</p>
             <p>Help</p>
         </div>

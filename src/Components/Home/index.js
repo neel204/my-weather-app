@@ -46,7 +46,7 @@ class Home extends Component{
         apiStatus: apiStatusConstants.initial,
         userAddedPlaces: [],
         locationDetails: {},
-        forcaseDetails:[],
+        forecastDetails:[],
         userInputLocation: ''
     }
 
@@ -89,8 +89,8 @@ class Home extends Component{
               timezone: data.timezone,
               localTime: data.local_time,
             };
-            const allforcaseDetailsFormate = data.forecast.map((each) => each);
-            const eachFromatted = allforcaseDetailsFormate.map((i) => ({
+            const allForecastDetailsFormate = data.forecast.map((each) => each);
+            const eachFormatted = allForecastDetailsFormate.map((i) => ({
               date: i.date,
               maxTempC: i.max_temp_c,
               maxTempF: i.max_temp_f,
@@ -107,7 +107,7 @@ class Home extends Component{
               maxWindKph: i.max_wind_kph,
             }));
       
-            console.log(locationDetailsFormate, eachFromatted);
+            console.log(locationDetailsFormate, eachFormatted);
           } else {
             this.setState({ apiStatus: apiStatusConstants.failure });
           }
@@ -172,12 +172,11 @@ class Home extends Component{
                     <div className='container-2'>
                         <Failure/>
                         <ThreeDots color="#0b69ff" height="50" width="50" />
-                        <InfinitySpin width='200' color="#4c7694"
-/>
+                        <InfinitySpin width='200' color="#4c7694"/>
                     </div>
                 </div>
                 <div>
-                    <h3>Belower are Forecast of next 5 Days</h3>
+                    <h3>Be lower are Forecast of next 5 Days</h3>
                 </div>
                 <Cards/>
             </div>
