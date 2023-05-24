@@ -1,6 +1,7 @@
 .not-found-container{
     width: auto;
     text-align: center;
+    margin-bottom: 20px;
 }
 
 .not-found-img{
@@ -8,3 +9,25 @@
     margin: 20px 0px;
 }
 
+.home-btn{
+    cursor: pointer;
+    outline: none;
+    background-color: transparent;
+    font-family: 'Comfortaa', cursive;
+    height: 32px;
+    border-radius: 6px;
+    width: 100px;
+    font-weight: 900;
+    color: #3b7197;
+    border: 2px solid #3b7197;
+}
+
+.home-btn:hover {
+    background-color: #3b7197;
+    color: #fff;
+    border: none;
+}
+
+.nf-heading{
+    color: #3b7197;
+}

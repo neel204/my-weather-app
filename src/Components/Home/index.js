@@ -153,7 +153,12 @@ class Home extends Component{
 
     render(){
         return(
-            <div className=''>
+          <>
+            <div className='small-screen'>
+              <h3>Sorry, this website is not compatible with mobile devices. Please try accessing it from a desktop or laptop computer.</h3>
+              <p>Apologies for the inconvenience. We are working on making our website mobile-friendly soon. Thank you for your patience and understanding.</p>
+            </div>
+            <div className='big-screen'>
                 <div className='main-home-container'>
                     <div className='container-1'>
                         <div className='user-input-container'>
@@ -180,6 +185,7 @@ class Home extends Component{
                 </div>
                 <Cards/>
             </div>
+            </>
         )
     }
 }

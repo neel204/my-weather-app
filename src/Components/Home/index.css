@@ -1,3 +1,21 @@
+@media screen and (max-width:768px) {
+    .big-screen{
+        display: none;
+    }
+    .small-screen{
+        display: block;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .big-screen{
+        display: block;
+    }
+    .small-screen{
+        display: none;
+    }
+}
+
 .weather-container{
     background-color: #f1f1f1;
     height: 100%;

@@ -8,10 +8,10 @@ const NotFound = () => (
       alt='not-found'
       className="not-found-img"
     />
-    <h1>Error 404</h1>
-    <h3>The page you looking for is not found.</h3>
+    <h1 className='nf-heading'>Error 404</h1>
+    <h3 className='nf-heading'>The page you looking for is not found.</h3>
     <Link to='/'>
-        <button>To Home</button>
+        <button className='home-btn'>To Home</button>
     </Link>
   </div>
 );
