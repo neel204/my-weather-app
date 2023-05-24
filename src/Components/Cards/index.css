@@ -1,11 +1,17 @@
 .card-container{
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     height: 90vh;
     flex-wrap: wrap;
     overflow: hidden;
 }
+/* 
+@media screen and ((min-width: 768px) and (max-width: 900px)) {
+  .card {
+    flex-direction: row;
+  }
+} */
 
 .card {
   width: 250px;
@@ -76,4 +82,12 @@
 
 .rain-detail{
     text-align: center;
+}
+
+
+hr {
+  height: 2px;
+  border-radius: 25px;
+  border: none;
+  background-color: #4c7694;
 }
