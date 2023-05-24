@@ -44,6 +44,8 @@ class Home extends Component{
     state = {
         apiStatus: apiStatusConstants.initial,
         userAddedPlaces: [],
+        locationDetails: {},
+        forcaseDetails:[],
         userInputLocation: ''
     }
 
@@ -53,6 +55,7 @@ class Home extends Component{
     }
 
     searchPlace = async () => {
+        this.setState(apiStatusConstants.inProgress)
         const userInputLocation = this.state
         let userPlace = {
             days : 5,
@@ -71,7 +74,17 @@ class Home extends Component{
 
         const response = await fetch(url, option)
         if (response.ok === true){
-
+            const data = await response.json()
+            const locationDetailsFormate = data.map(eachInfo => ({
+                location: eachInfo.location,
+                region: eachInfo.region,
+                country: eachInfo.country,
+                latitude: eachInfo.latitude,
+                longitude: eachInfo.longitude,
+                timezone: eachInfo.timezone,
+                localTime: eachInfo.local_time,
+            }))
+            const forcaseDetailsFormate = data.forecast.map
         }
     }    
 
