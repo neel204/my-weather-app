@@ -1,38 +1,52 @@
-import { Link, NavLink, withRouter } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { NavLink, Link, useLocation } from 'react-router-dom';
+import { GiHamburgerMenu } from 'react-icons/gi';
+
 import './index.css';
 
-const Header = ({ location }) => {
-   // eslint-disable-next-line 
-  const { pathname } = location;
+const Header = () => {
+  const [showNavbar, setShowNavbar] = useState(false);
+  const location = useLocation();
+
+  const handleShowNavbar = () => {
+    setShowNavbar(!showNavbar);
+  };
+
+  useEffect(() => {
+    setShowNavbar(false); // Close the navbar when the route changes
+  }, [location]);
 
   return (
-    <nav className='weather-nav'>
-      <Link to='/'>
-        <img
-          src='https://res.cloudinary.com/dqhwxowdo/image/upload/v1682089554/weather-low-resolution-logo-color-on-transparent-background_1_icaqkg.png'
-          alt='weather-logo'
-          className='weather-logo link'
-        />
-      </Link>
-      <ul className='weather-links'>
-        <li>
-          <NavLink to='/' exact className='link' activeClassName='active-link active-link-animation'>
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/about' className='link' activeClassName='active-link active-link-animation'>
-            About
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/contact' className='link' activeClassName='active-link active-link-animation'>
-            Contact
-          </NavLink>
-        </li>
-      </ul>
+    <nav className="navbar">
+      <div className="container">
+        <div className="logo">
+          <Link to="/">
+            <img
+              src="https://res.cloudinary.com/dqhwxowdo/image/upload/v1682089554/weather-low-resolution-logo-color-on-transparent-background_1_icaqkg.png"
+              alt="weather-logo"
+              className="logo link"
+            />
+          </Link>
+        </div>
+        <div className="menu-icon" onClick={handleShowNavbar}>
+          <GiHamburgerMenu className='hum'/>
+        </div>
+        <div className={`nav-elements ${showNavbar ? 'active' : ''}`}>
+          <ul>
+            <li>
+              <NavLink exact to="/" activeClassName="active">Home</NavLink>
+            </li>
+            <li>
+              <NavLink to="/about" activeClassName="active">About</NavLink>
+            </li>
+            <li>
+              <NavLink to="/contact" activeClassName="active">Contact</NavLink>
+            </li>
+          </ul>
+        </div>
+      </div>
     </nav>
   );
 };
 
-export default withRouter(Header);
+export default Header;
